@@ -16,13 +16,13 @@ db.tweets.aggregate([
 
 - 6.
 
-# 7:00:00 a 18:59:59
+7:00:00 a 18:59:59
 db.tweets.aggregate([
 	{ $project: {_id:0, "user.location": 1,  hrsSub: { $substr: ["$created_at", 11, 2] } } },
 	{$match:{hrsSub:'18'}},
 	{$sortByCount:"$user.location"}])
 
-# 19:00:00 a 6:59:59
+19:00:00 a 6:59:59
 db.tweets.aggregate([
 	{ $project: {_id:0, "user.location": 1,  hrsSub: { $substr: ["$created_at", 11, 2] } } },
 	{$match:{$or:[{hrsSub:'20'},{hrsSub:'19'}]}},
